@@ -1,0 +1,9 @@
+
+body{
+	background: #151515;
+}
+
+.inner {
+    display: table;
+    margin: 0 auto;
+ }

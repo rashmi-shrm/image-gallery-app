@@ -1,24 +1,24 @@
-var express = require('express')
-var router = express.Router()
+var express = require('express');
+var router = express.Router();
 var config=require('../config/config.js');
 var request = require('request');
 
 // Search by category and page no
-var url
+var url;
 router.get('/:category/:page', function(req,res){
 	request({
 	    url: 'https://pixabay.com/api/?key='+config.api_key+'&q='+req.params.category+'&page='+req.params.page+'&image_type=photo&pretty=true',
 	    json: true
 	}, function (error, response, body) {
-		
-	    if (!error && response.statusCode === 200) {
+	    console.log(error, response, body);
+	    if (response.statusCode != 200) {
+	    	res.status(500).send({ error: 'No results found' });
+	    } else {
+			console.log(response.statusCode);
 	  	 	res.json(body);
 	    }
-
-	    else
-	    	console.log("something went wrong");
-	})
-})
+	});
+});
 
 //Search by image id
 router.get('/:id', function(req,res){
@@ -30,8 +30,9 @@ router.get('/:id', function(req,res){
 	    	res.json(body);
 	    }
 
-	    else
+	    else{
 	    	console.log("something went wrong");
+	    }
 	})
 })
 

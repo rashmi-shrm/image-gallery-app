@@ -4,7 +4,7 @@ var router = express.Router();
 router.use('/gallery', require('./route'));
 
 router.get('/', function (req, res) {
-   res.sendFile('/Users/rashmi/Documents/image_gallery_app/views/' + 'index.html');
+   res.sendfile('views/index.html', {'root': './'});
 })
 
 module.exports = router;

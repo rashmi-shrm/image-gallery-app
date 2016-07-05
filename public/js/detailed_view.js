@@ -1,5 +1,5 @@
 function fetch_details(id){
-	var url = 'http://127.0.0.1:8080/gallery/'+id;
+	var url = '/gallery/'+id;
   	$.getJSON(url, function(resp) {
   		 detailed_page_url = resp.hits[0]['pageURL'];
  		 window.open(detailed_page_url, '_blank');

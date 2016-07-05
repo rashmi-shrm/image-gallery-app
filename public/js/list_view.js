@@ -4,7 +4,7 @@ var search_term;
 function fetch_list(search_term){
   if(search_term != ""){
     $.ajax({
-      url: 'http://127.0.0.1:8080/gallery/'+search_term+'/'+page_no,
+      url: '/gallery/'+search_term+'/'+page_no,
       dataType: 'json',
 
       success: function(resp) {
